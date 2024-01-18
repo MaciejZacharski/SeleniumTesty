@@ -51,6 +51,72 @@ public class XPathTest {
         By shortPath = By.xpath("//ul");
         driver.findElement(shortPath);
 
+        By all = By.xpath("//*");
+        driver.findElement(all);
+
+        By firstInput = By.xpath("(//input[1])");
+        driver.findElement(firstInput);
+
+        By lastElement = By.xpath("(//input[last()])");
+        driver.findElement(lastElement);
+
+        By idElement = By.xpath("(//*[@id])");
+        driver.findElement(idElement);
+
+        By buttonByName = By.xpath("(//input[@name])");
+        driver.findElement(buttonByName);
+
+        By attributeEquals = By.xpath("//button[@id='clickOnMe']");
+        driver.findElement(attributeEquals);
+
+        By attributeNotEquals = By.xpath("//button[@id!='clickOnMe']");
+        driver.findElement(attributeNotEquals);
+
+        By attributeContains = By.xpath("//*[contains(@name, 'name')]");
+        driver.findElement(attributeContains);
+
+        By attributeStartsWith = By.xpath("//*[starts-with(@name,'fname')]");
+        driver.findElement(attributeStartsWith);
+
+        By attributeEndsWith = By.xpath("//*[substring(@name,string-length(@name)-string-length('ame')+1)='ame']");
+        driver.findElement(attributeEndsWith);
+
+        By child = By.xpath("//div/child::ul");
+        driver.findElement(child);
+
+        By descendant = By.xpath("//div/descendant::ul");
+        driver.findElement(descendant);
+
+        By ancestor = By.xpath("//div/ancestor::*");
+        driver.findElement(ancestor);
+
+        By parent = By.xpath("//div//..");
+        driver.findElement(parent);
+
+        By following = By.xpath("//img//following::*");
+        driver.findElement(following);
+
+        By followingSibling = By.xpath("//img//following-sibling::*");
+        driver.findElement(followingSibling);
+
+        By preceding = By.xpath("//button//preceding::*");
+        driver.findElement(preceding);
+
+        By divsAndLinks = By.xpath("//div | //a");
+        driver.findElement(divsAndLinks);
+
+        By andSelector = By.xpath("//input[@name = 'fname' and @id='fname']");
+        driver.findElement(andSelector);
+
+        By orSelector = By.xpath("//input[@name = 'fname' or @id='fnam']");
+        driver.findElement(orSelector);
+
+
+
+
+
+
+
 
     }
 }
