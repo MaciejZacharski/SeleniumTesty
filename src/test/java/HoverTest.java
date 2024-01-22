@@ -22,7 +22,7 @@ public class HoverTest {
 
         WebElement heading = driver.findElement(By.tagName("h1"));
         Actions actions = new Actions(driver);
-       
+
         actions.moveToElement(heading).perform();
 
 
