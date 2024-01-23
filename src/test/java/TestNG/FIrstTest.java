@@ -1,3 +1,6 @@
+package TestNG;
+
+import TestNG.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -6,17 +9,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
-public class AnotherTest extends BaseTest {
+public class FIrstTest  extends BaseTest {
+
 
     WebDriver driver;
 
     @Test
-    public void firstTest()  {
+    public void firstTest() {
 
 
         WebDriverManager.chromedriver().setup();
@@ -30,10 +35,11 @@ public class AnotherTest extends BaseTest {
 
         String paraText = driver.findElement(locator).getText();
         Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        driver.quit();
 
     }
-    @Test
-    public void secondTest()  {
+    @Test @Ignore
+    public void secondTest() {
 
 
         WebDriverManager.chromedriver().setup();
@@ -47,6 +53,7 @@ public class AnotherTest extends BaseTest {
 
         String paraText = driver.findElement(locator).getText();
         Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        driver.quit();
 
     }
 

@@ -1,3 +1,6 @@
+package TestNG;
+
+import TestNG.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -11,13 +14,12 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class FIrstTest  extends BaseTest{
-
+public class AnotherTest extends BaseTest {
 
     WebDriver driver;
 
     @Test
-    public void firstTest() {
+    public void firstTest()  {
 
 
         WebDriverManager.chromedriver().setup();
@@ -35,7 +37,7 @@ public class FIrstTest  extends BaseTest{
 
     }
     @Test
-    public void secondTest() {
+    public void secondTest()  {
 
 
         WebDriverManager.chromedriver().setup();
