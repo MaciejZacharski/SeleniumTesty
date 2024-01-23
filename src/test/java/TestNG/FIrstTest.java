@@ -32,13 +32,18 @@ public class FIrstTest  extends BaseTest {
         driver.findElement(By.id("clickOnMe")).click();
         By locator = By.cssSelector("p");
         waitForElementToExist(locator);
-
+        WebElement para = driver.findElement(By.cssSelector("p"));
         String paraText = driver.findElement(locator).getText();
+        Assert.assertEquals(para.isDisplayed(), true);
+        Assert.assertTrue(para.isDisplayed());
+        Assert.assertTrue(paraText.startsWith("Dopiero"));
+
         Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+//        Assert.assertEquals(paraText, "Dopiero", "Teksy są różne");
         driver.quit();
 
     }
-    @Test @Ignore
+    @Test 
     public void secondTest() {
 
 
