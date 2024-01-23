@@ -10,11 +10,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
-
+@Listeners(value = SampleTestListener.class)
 public class FIrstTest  extends BaseTest {
 
 
@@ -24,8 +26,7 @@ public class FIrstTest  extends BaseTest {
     public void firstTest() {
 
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = DriverFactory.getDriver();
 
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
@@ -34,12 +35,12 @@ public class FIrstTest  extends BaseTest {
         waitForElementToExist(locator);
         WebElement para = driver.findElement(By.cssSelector("p"));
         String paraText = driver.findElement(locator).getText();
-        Assert.assertEquals(para.isDisplayed(), true);
+
         Assert.assertTrue(para.isDisplayed());
         Assert.assertTrue(paraText.startsWith("Dopiero"));
-
+        Assert.assertTrue(paraText.startsWith("Pojawilem"));
         Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
-//        Assert.assertEquals(paraText, "Dopiero", "Teksy są różne");
+        Assert.assertEquals(paraText, "Dopiero", "Teksy są różne");
         driver.quit();
 
     }
@@ -47,18 +48,27 @@ public class FIrstTest  extends BaseTest {
     public void secondTest() {
 
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+       driver = DriverFactory.getDriver();
 
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
         driver.findElement(By.id("clickOnMe")).click();
         By locator = By.cssSelector("p");
         waitForElementToExist(locator);
+        WebElement para = driver.findElement(By.cssSelector("p"));
 
+        SoftAssert softAssert = new SoftAssert();
         String paraText = driver.findElement(locator).getText();
-        Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        softAssert.assertEquals(para.isDisplayed(), true);
+        softAssert.assertTrue(para.isDisplayed());
+        softAssert.assertTrue(paraText.startsWith("Dopiero"));
+        softAssert.assertTrue(paraText.startsWith("Pojawilem"));
+        softAssert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        softAssert.assertEquals(paraText, "Dopiero", "Teksy są różne");
+        softAssert.assertEquals(paraText, "Siema");
+
         driver.quit();
+        softAssert.assertAll();
 
     }
 
